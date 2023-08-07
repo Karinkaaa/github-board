@@ -7,13 +7,6 @@ export const repoApi = createApi({
   reducerPath: "repoApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
-    prepareHeaders: (headers) => {
-      headers.set(
-        "authorization",
-        "Bearer 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"
-      );
-      return headers;
-    },
   }),
   endpoints: (builder) => {
     return {
@@ -30,11 +23,8 @@ export const repoApi = createApi({
           const pathname = new URL(url).pathname;
           return `${pathname}/issues?state=open&per_page=10&page=${page}`;
         },
-        transformResponse: (response: IRepoIssue[], meta,arg) => {
-          const result = generateTasksFromIssues(response, COLUMNS.TODO);
-          console.log("- - - 1", result, response, meta,arg);
-
-          return result;
+        transformResponse: (response: IRepoIssue[]) => {
+          return generateTasksFromIssues(response, COLUMNS.TODO);
         },
       }),
       getAssignedIssues: builder.query<IRepoIssue[], IQuery>({
@@ -43,10 +33,7 @@ export const repoApi = createApi({
           return `${pathname}/issues?state=open&per_page=10&assignee=*&page=${page}`;
         },
         transformResponse: (response: IRepoIssue[]) => {
-          const result = generateTasksFromIssues(response, COLUMNS.IN_PROGRESS);
-          console.log("- - - 2", result);
-
-          return result;
+          return generateTasksFromIssues(response, COLUMNS.IN_PROGRESS);
         },
       }),
       getClosedIssues: builder.query<IRepoIssue[], IQuery>({
@@ -55,10 +42,7 @@ export const repoApi = createApi({
           return `${pathname}/issues?state=closed&per_page=10&page=${page}`;
         },
         transformResponse: (response: IRepoIssue[]) => {
-          const result = generateTasksFromIssues(response, COLUMNS.DONE);
-          console.log("- - - 3", result);
-
-          return result;
+          return generateTasksFromIssues(response, COLUMNS.DONE);
         },
       }),
     };
