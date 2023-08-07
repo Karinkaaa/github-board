@@ -1,7 +1,7 @@
 ## [Demo version](https://karinkaaa.github.io/github-board/)
 
 #### Preview:
-![preview](https://github.com/Karinkaaa/github-board/blob/master/public/preview.png?raw=true)
+![preview](public/preview.png)
 
 # Getting Started with Create React App
 
