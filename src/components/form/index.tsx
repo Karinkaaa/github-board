@@ -20,7 +20,7 @@ export const RepoForm: React.FC = () => {
       layout="inline"
       autoComplete="off"
       onFinish={onFinish}
-      style={{ flexWrap: "nowrap" }}
+      style={{ flexWrap: "nowrap", height: 50 }}
     >
       <Form.Item
         name="URL"

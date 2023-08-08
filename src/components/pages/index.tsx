@@ -62,6 +62,7 @@ export const MainPage: React.FC = () => {
         ) : (
           <Empty
             image={Empty.PRESENTED_IMAGE_SIMPLE}
+            style={{ position: "absolute", top: 120, left: "calc(50% - 64px)" }}
             description={
               <p style={{ color: isError ? "red" : "inherit" }}>
                 <>
